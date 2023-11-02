@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const map = new Map([
+      ["name", "少爷"],
+      ["title", "985"],
+    ]);
+    map.set(["w", "5"]);
+    console.log(map.size);
+    console.log(map.get("name"));
+    console.log(map.has("name"));
+    console.log(map.delete("name"));
+
+    const array = new Set(["1", "1", "2", "3", "44", "444", "56"]);
+    console.log(array);
+
+    // 合并对象
+    const target = { a: 1, b: 2 };
+    const source = { b: 3, c: 4 };
+    const merged = Object.assign(target, source);
+    console.log(merged); // { a: 1, b: 3, c: 4 }
+  </script>
+</html>

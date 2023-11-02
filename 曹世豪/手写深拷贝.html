@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深拷贝</title>
+</head>
+<body>
+    
+</body>
+<script>
+// function fn(obj) {
+//       // 判断数据是否是复杂类型
+//       if (obj instanceof Object) {
+//         //判断数据是否是数组
+//         if (Array.isArray(obj)) {
+//             console.log(Array.isArray(obj));
+//           //声明一个空数组来接收拷贝后的数据
+//           let result = []
+//           obj.forEach(item => {
+//             // 需要递归深层遍历，否则复制的是地址
+//             result.push(fn(item))
+//           })
+//           // 返回输出这个数组,数组拷贝完成
+//           return result
+//         } else {
+//           //如果是对象,就声明一个空对象来接收拷贝后的数据
+//           let result = {}
+//           for (let k in obj) {
+//             // 使用递归深层遍历
+//             result[k] = fn(obj[k])
+//           }
+//           // 返回输出这个对象,对象拷贝完成
+//           return result
+//         }
+//       }
+//       console.log(obj);
+//       // 简单数据类型则直接返回输出
+//       return obj
+     
+//     }
+//     fn()
+
+
+function myNew(fn, ...args) {
+      // 判断参数是否是一个函数
+      if (typeof fn !== "function") {
+        return console.error("type error");
+      }
+      // 创建一个对象，并将对象的原型绑定到构造函数的原型上
+      const obj = Object.create(fn.prototype);
+      const value = fn.apply(obj, args); // 调用构造函数，并且this绑定到obj上
+      // 如果构造函数有返回值，并且返回的是对象，就返回value ;否则返回obj
+      return value instanceof Object ? value : obj;
+ }
+ myNew()
+
+
+
+
+
+</script>
+<style>
+
+</style>
+</html>
